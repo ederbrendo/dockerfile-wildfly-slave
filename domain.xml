@@ -106,21 +106,19 @@
             <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
             <subsystem xmlns="urn:jboss:domain:datasources:4.0">
                 <datasources>
-                     <datasource jta="true" jndi-name="java:/PostgresDS" pool-name="PostgresDS" enabled="true" use-ccm="true">
-                        <connection-url>jdbc:postgresql://172.17.0.3:5432/teste</connection-url>
-                        <driver-class>org.postgresql.Driver</driver-class>
-                        <driver>postgres</driver>
+                    <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true">
+                        <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                        <driver>h2</driver>
                         <security>
-                            <user-name>teste</user-name>
-                            <password>teste</password>
+                            <user-name>sa</user-name>
+                            <password>sa</password>
                         </security>
-                       	<validation>
-                            <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
-                            <background-validation>true</background-validation>
-                            <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
-                        </validation>
                     </datasource>
+
                     <drivers>
+                        <driver name="h2" module="com.h2database.h2">
+                            <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                        </driver>
                         <driver name="postgres" module="org.postgres">
                             <driver-class>org.postgresql.Driver</driver-class>
                         </driver>
@@ -574,7 +572,7 @@
             </outbound-socket-binding>
             <!--ALTERACAO: Configurado para o servidor Apache -->
             <outbound-socket-binding name="apache1">
-                <remote-destination host="192.168.1.112" port="8080"/>
+                <remote-destination host="172.18.0.2" port="8080"/>
             </outbound-socket-binding>
         </socket-binding-group>
         <socket-binding-group name="load-balancer-sockets" default-interface="public">

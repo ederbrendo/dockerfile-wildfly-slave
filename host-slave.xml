@@ -61,7 +61,7 @@
     </management>
 
  <domain-controller>
-        <remote host="${jboss.domain.master.address}" username="magumatcom" port="${jboss.domain.master.port:9999}" security-realm="ManagementRealm">
+        <remote host="${jboss.domain.master.address}" username="admin" port="${jboss.domain.master.port:9999}" security-realm="ManagementRealm">
             <discovery-options>
                 <static-discovery name="primary" protocol="${jboss.domain.master.protocol:remote}" host="${jboss.domain.master.address}" port="${jboss.domain.master.port:9999}"/>
             </discovery-options>

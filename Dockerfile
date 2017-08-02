@@ -24,10 +24,9 @@ COPY domain.xml /opt/wildfly/domain/configuration/domain.xml
 COPY host-slave.xml /opt/wildfly/domain/configuration/host-slave.xml
 
 RUN mkdir -p /opt/wildfly/modules/org/postgres/main
-RUN cd /opt/wildfly/modules/org/postgres/main
-RUN wget http://central.maven.org/maven2/org/postgresql/postgresql/9.4-1201-jdbc41/postgresql-9.4-1201-jdbc41.jar
 
 COPY module.xml /opt/wildfly/modules/org/postgres/main/module.xml
+COPY postgresql-9.4-1201-jdbc41.jar /opt/wildfly/modules/org/postgres/main/postgresql-9.4-1201-jdbc41.jar
 
 RUN systemctl enable wildfly.service
 
