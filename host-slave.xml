@@ -8,7 +8,7 @@
         <security-realms>
             <security-realm name="ManagementRealm">
                 <server-identities>
-                    <!-- Replace this with either a base64 password of your own, or use a vault with a vault expression -->
+                    <!-- Senha do usuario master em base64 na tag secret-->
                     <secret value="YWRtaW4="/>
                 </server-identities>
                 <authentication>
@@ -61,6 +61,7 @@
     </management>
 
  <domain-controller>
+	<!-- Nome do usuario master em username na tag remote -->
         <remote host="${jboss.domain.master.address}" username="admin" port="${jboss.domain.master.port:9999}" security-realm="ManagementRealm">
             <discovery-options>
                 <static-discovery name="primary" protocol="${jboss.domain.master.protocol:remote}" host="${jboss.domain.master.address}" port="${jboss.domain.master.port:9999}"/>
@@ -77,11 +78,11 @@
     </interfaces>
     <jvms>
 	<jvm name="default">
-            <heap size="64m" max-size="388m"/>
+            <heap size="64m" max-size="512m"/>
             <jvm-options>
                 <option value="-server"/>
                 <option value="-XX:MetaspaceSize=96m"/>
-                <option value="-XX:MaxMetaspaceSize=388m"/>
+                <option value="-XX:MaxMetaspaceSize=512m"/>
             </jvm-options>
         </jvm>
     </jvms>
