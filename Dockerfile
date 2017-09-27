@@ -20,7 +20,6 @@ RUN cp /opt/wildfly/docs/contrib/scripts/init.d/wildfly.conf /etc/default/
 RUN cp /opt/wildfly/docs/contrib/scripts/init.d/wildfly-init-redhat.sh /etc/init.d/wildfly
 
 COPY wildfly.conf /etc/default/wildfly.conf
-COPY domain.xml /opt/wildfly/domain/configuration/domain.xml
 COPY host-slave.xml /opt/wildfly/domain/configuration/host-slave.xml
 
 RUN mkdir -p /opt/wildfly/modules/org/postgres/main
